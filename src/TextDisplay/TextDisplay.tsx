@@ -11,9 +11,9 @@ export const TextDisplay: React.FC<TextDisplayProps> = ({ text, characterDesigns
 		<p>
 			{
 				text.split('').map((character, index) => {
-					if (characterDesigns[character]) {
+					if (characterDesigns[character.toUpperCase()]) {
 						// Index is actually appropriate in this case
-						return (<img key={index} src={characterDesigns[character]} alt={character} />)
+						return (<img key={index} src={characterDesigns[character.toUpperCase()]} alt={character} />)
 					} else {
 						return character;
 					}

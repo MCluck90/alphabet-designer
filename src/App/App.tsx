@@ -9,6 +9,7 @@ import './App.css';
 interface AppState {
   activeCharacter: string;
   characterDesigns: PartialLookup<string>;
+  text: string;
 }
 
 export class App extends React.Component<{}, AppState> {
@@ -17,10 +18,12 @@ export class App extends React.Component<{}, AppState> {
 
     this.setActiveCharacter = this.setActiveCharacter.bind(this);
     this.updateDesign = this.updateDesign.bind(this);
+    this.onInput = this.onInput.bind(this);
 
     this.state = {
       activeCharacter: '',
-      characterDesigns: {}
+      characterDesigns: {},
+      text: 'Hello world',
     };
   }
 
@@ -33,7 +36,8 @@ export class App extends React.Component<{}, AppState> {
           characterDesigns={this.state.characterDesigns}
           setActiveCharacter={this.setActiveCharacter} />
         <CharacterDesigner previousDesign={previousDesign} onSave={this.updateDesign} />
-        <TextDisplay text="HELLO WORLD" characterDesigns={this.state.characterDesigns} />
+        <input type="text" onInput={this.onInput} />
+        <TextDisplay text={this.state.text} characterDesigns={this.state.characterDesigns} />
       </div>
     );
   }
@@ -49,5 +53,9 @@ export class App extends React.Component<{}, AppState> {
         [this.state.activeCharacter]: design,
       }
     });
+  }
+
+  private onInput(ev: React.FormEvent<HTMLInputElement>) {
+    this.setState({ text: ev.currentTarget.value });
   }
 }
