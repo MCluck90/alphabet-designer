@@ -7,6 +7,7 @@ import { PartialLookup } from '../types';
 import './App.css';
 
 interface AppState {
+  activeCharacter: string;
   characterDesigns: PartialLookup<string>;
 }
 
@@ -15,6 +16,7 @@ export class App extends React.Component<{}, AppState> {
     super(props);
 
     this.state = {
+      activeCharacter: '',
       characterDesigns: {}
     };
   }
@@ -23,8 +25,8 @@ export class App extends React.Component<{}, AppState> {
     return (
       <div className="App">
         <Alphabet characterDesigns={this.state.characterDesigns} />
-        <CharacterDesigner />
-        <TextDisplay text="Hello world" />
+        <CharacterDesigner character={this.state.activeCharacter} />
+        <TextDisplay text="Hello world" characterDesigns={this.state.characterDesigns} />
       </div>
     );
   }
