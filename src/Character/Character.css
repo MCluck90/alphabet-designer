@@ -2,3 +2,8 @@
 	border: solid 1px #000;
 	text-align: center;
 }
+
+.Character img {
+	width: 100px;
+	height: 100px;
+}
