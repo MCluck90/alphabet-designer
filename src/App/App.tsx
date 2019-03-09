@@ -33,7 +33,7 @@ export class App extends React.Component<{}, AppState> {
           characterDesigns={this.state.characterDesigns}
           setActiveCharacter={this.setActiveCharacter} />
         <CharacterDesigner previousDesign={previousDesign} onSave={this.updateDesign} />
-        <TextDisplay text="Hello world" characterDesigns={this.state.characterDesigns} />
+        <TextDisplay text="HELLO WORLD" characterDesigns={this.state.characterDesigns} />
       </div>
     );
   }
