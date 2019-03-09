@@ -16,6 +16,7 @@ export class App extends React.Component<{}, AppState> {
     super(props);
 
     this.setActiveCharacter = this.setActiveCharacter.bind(this);
+    this.updateDesign = this.updateDesign.bind(this);
 
     this.state = {
       activeCharacter: '',
@@ -24,13 +25,14 @@ export class App extends React.Component<{}, AppState> {
   }
 
   render() {
+    const previousDesign = this.state.characterDesigns[this.state.activeCharacter];
     return (
       <div className="App">
         <Alphabet
           activeCharacter={this.state.activeCharacter}
           characterDesigns={this.state.characterDesigns}
           setActiveCharacter={this.setActiveCharacter} />
-        <CharacterDesigner character={this.state.activeCharacter} />
+        <CharacterDesigner previousDesign={previousDesign} onSave={this.updateDesign} />
         <TextDisplay text="Hello world" characterDesigns={this.state.characterDesigns} />
       </div>
     );
@@ -38,5 +40,14 @@ export class App extends React.Component<{}, AppState> {
 
   private setActiveCharacter(character: string) {
     this.setState({ activeCharacter: character });
+  }
+
+  private updateDesign(design: string) {
+    this.setState({
+      characterDesigns: {
+        ...this.state.characterDesigns,
+        [this.state.activeCharacter]: design,
+      }
+    });
   }
 }
