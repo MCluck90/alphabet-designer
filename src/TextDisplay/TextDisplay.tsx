@@ -6,8 +6,18 @@ export interface TextDisplayProps {
 	text: string;
 }
 
-export const TextDisplay: React.FC<TextDisplayProps> = ({ text }) => (
+export const TextDisplay: React.FC<TextDisplayProps> = ({ text, characterDesigns }) => (
 	<div>
-		<p>{text}</p>
+		<p>
+			{
+				text.split('').map((character) => {
+					if (characterDesigns[character]) {
+						return (<img src={characterDesigns[character]} alt={character} />)
+					} else {
+						return character;
+					}
+				})
+			}
+		</p>
 	</div>
 );
