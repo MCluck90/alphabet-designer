@@ -3,6 +3,10 @@
 	text-align: center;
 }
 
+.Character.active {
+	border-color: #F00;
+}
+
 .Character img {
 	width: 100px;
 	height: 100px;
